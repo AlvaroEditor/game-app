@@ -1,33 +1,33 @@
 import React, { useEffect, useRef, useState } from "react";
 import { loadWord } from "../api";
 
-const BeerList = ({ beers }) => {
+const WordList = ({ word }) => {
   console.log(word);
-  if (beers === null) {
+  if (word === null) {
     return <div>Loading...</div>;
   }
-  if (beers.length === 0) {
-    return <div>No beers.</div>;
+  if (word.length === 0) {
+    return <div>This word does not exist.</div>;
   }
   return (
-    <div className="beer-list">
-      {beers.map((beer) => (
-        <div className="beer">{beer.name}</div>
+    <div className="Word-list">
+      {word.map((word) => (
+        <div className="Word">{word.meanings}</div>
       ))}
     </div>
   );
 };
+const word = "example";
+const all_info = await loadWord(word);
+console.log(all_info);
 
-const beers = await loadWord(word);
-console.log(beers);
-
-function BeerSearch() {
+function WordSearch() {
   const searchRef = useRef();
   const [search, setSearch] = useState("");
-  const [beers, setBeers] = useState(null);
+  const [word, setWord] = useState(null);
 
   useEffect(() => {
-    loadBeers().then((beers) => setBeers(beers));
+    loadWord().then((word) => setWord(word));
   }, []);
 
   const doSearch = (event) => {
@@ -41,9 +41,9 @@ function BeerSearch() {
         <input type="text" ref={searchRef} />
         <button>Search</button>
       </form>
-      <BeerList beers={beers} />
+      <WordList word={word} />
     </div>
   );
 }
 
-export default BeerSearch;
+export default WordSearch;
