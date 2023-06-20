@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { loadWord } from "../api";
-
+const WordList="Hello"
+/*
 const WordList = ({ word }) => {
   console.log(word);
   if (word === null) {
@@ -17,9 +18,11 @@ const WordList = ({ word }) => {
     </div>
   );
 };
-const word = "example";
+ <WordList word={word} />
+*/
+const word = "HOLA"
 const all_info = await loadWord(word);
-console.log(all_info);
+
 
 function WordSearch() {
   const searchRef = useRef();
