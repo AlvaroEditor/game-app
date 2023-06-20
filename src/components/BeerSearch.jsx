@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
-import { loadBeers } from "../api";
+import { loadWord } from "../api";
 
 const BeerList = ({ beers }) => {
-  console.log(beers);
+  console.log(word);
   if (beers === null) {
     return <div>Loading...</div>;
   }
@@ -17,6 +17,9 @@ const BeerList = ({ beers }) => {
     </div>
   );
 };
+
+const beers = await loadWord(word);
+console.log(beers);
 
 function BeerSearch() {
   const searchRef = useRef();

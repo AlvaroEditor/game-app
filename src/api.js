@@ -6,9 +6,9 @@
 // async: mark a function that needs to call other asynchronous functions
 //       
 
-export const loadBeers = async () => {
-  const response = await fetch(`https://api.punkapi.com/v2/beers`);
-  const beers = await response.json();
-  return beers;
+export const loadWord = async (word) => {
+  const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
+  const allinfo = await response.json();
+  return allinfo;
 }
 
