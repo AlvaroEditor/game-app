@@ -4,9 +4,9 @@ import { loadWord } from "../api";
 function MyComponent() {
   const [userInput, setUserInput] = useState("");
   const [word, setSavedValue] = useState("");
-  const [allInfo, setAllInfo] = useState(null);
+  const [allInfo, setAllInfo] = useState([]);
 
-    
+
   const handleChange = (event) => {
     setUserInput(event.target.value);
   };
@@ -14,8 +14,8 @@ function MyComponent() {
     setSavedValue(userInput);
     setUserInput("");
     const all_info = await loadWord(userInput);
-    console.log(allInfo);
-    setAllInfo(all_info);
+
+    setAllInfo(Array.isArray(all_info) ? all_info : [all_info]); 
 
   };
 
@@ -26,7 +26,13 @@ function MyComponent() {
       <input type="text" value={userInput} onChange={handleChange} />
       <button onClick={saveValue}>Search</button>
       <p>Tu entrada: {word}</p>
-      {allInfo && <p>Tu salida: {allInfo}</p>}
+      <div>
+        {allInfo.map((definition, index) => (  
+          <div key={index}>
+            <p>Phonetics: {definition.phonetics}</p>
+          </div>
+        ))}
+      </div>
     </div>
 
 
