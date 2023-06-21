@@ -24,10 +24,11 @@ function MyComponent() {
       <input type="text" value={userInput} onChange={handleChange} />
       <button onClick={saveValue}>Search</button>
       <p>Tu entrada: {savedValue}</p>
-      <p>Tu salida: {allInfo}</p>
+      {allInfo && <p>Tu salida: {allInfo}</p>}
+    </div>
       
 
-    </div>
+  
     
 
     
