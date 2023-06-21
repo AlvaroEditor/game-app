@@ -6,6 +6,9 @@ function MyComponent() {
   const [word, setSavedValue] = useState("");
   const [allInfo, setAllInfo] = useState([]);
 
+  useEffect(() => {
+    loadWord().then((allInfo) => setAllInfo(allInfo));
+  }, []);
 
   const handleChange = (event) => {
     setUserInput(event.target.value);
@@ -13,9 +16,9 @@ function MyComponent() {
   const saveValue = async () => {
     setSavedValue(userInput);
     setUserInput("");
-    const all_info = await loadWord(userInput);
+    all_info = await loadWord(userInput);
 
-    setAllInfo(Array.isArray(all_info) ? all_info : [all_info]); 
+    setAllInfo(Array.isArray(all_info) ? all_info : [all_info]);
 
   };
 
@@ -27,11 +30,21 @@ function MyComponent() {
       <button onClick={saveValue}>Search</button>
       <p>Tu entrada: {word}</p>
       <div>
-        {allInfo.map((definition, index) => (  
+        { /* {allInfo.map((definition, index) => (  
           <div key={index}>
             <p>Phonetics: {definition.phonetics}</p>
+      </div> 
+        ))}
+          {allInfo.map((definition, index) => (
+          <div key={index}>
+            <p>Phonetics:</p>
+            {definition.phonetics.map((phonetic, phoneticIndex) => (
+              <p key={phoneticIndex}>{phonetic.text}</p>
+            ))}
           </div>
         ))}
+        */}
+       
       </div>
     </div>
 
