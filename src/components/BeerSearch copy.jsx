@@ -14,13 +14,19 @@ function MyComponent() {
     setUserInput(event.target.value);
   };
   const saveValue = async () => {
+
+    const something = "example";
+    const beers = await loadWord(something);
+    console.log(beers);
+    /*
     setSavedValue(userInput);
     setUserInput("");
     all_info = await loadWord(userInput);
 
     setAllInfo(Array.isArray(all_info) ? all_info : [all_info]);
-
+    */
   };
+
 
 
 

@@ -1,12 +1,17 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
-import MyComponent from '../components/BeerSearch copy';
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+import MyComponent from "../components/BeerSearch copy";
 ---
 
-<Layout title="Alvaro's game">
+<Layout title="Alvaro's dictionary">
 	<main>
-		<p>Enter a word here:</p>
+		<div class="title">
+		<h1>Álvaro's dictionary</h1>
+		</div>
+	<div>
+			<p>Search for a word here:</p>
+		</div>
 
 		<MyComponent client:load />
 	</main>
@@ -54,5 +59,8 @@ import MyComponent from '../components/BeerSearch copy';
 		grid-template-columns: repeat(auto-fit, minmax(24ch, 1fr));
 		gap: 1rem;
 		padding: 0;
+	}
+	.title {
+		border-width: 3px;
 	}
 </style>
