@@ -1,54 +1,20 @@
-import React, { useEffect, useRef, useState } from "react";
-import { loadWord } from "../api";
+import React, { useState } from "react";
 
-const WordList = ({ wordList }) => {
-  console.log(wordList);
-  if (wordList === null) {
-    return <div>Loading...</div>;
-  }
-  if (wordList.length === 0) {
-    return <div>This word does not exist.</div>;
-  }
-  return (
-    <div className="Word-list">
-      {wordList.map((word) => (
-        <div className="Word" key={word.id}>
-          {word.meanings}
-        </div>
-      ))}
-    </div>
-  );
-};
+function MyComponent() {
+  const [userInput, setUserInput] = useState("");
 
-function WordSearch() {
-  const searchRef = useRef();
-  const [search, setSearch] = useState("");
-  const [wordList, setWordList] = useState(null);
-
-  useEffect(() => {
-    loadWord().then((word) => setWordList(word));
-  }, []);
-
-  const doSearch = (event) => {
-    event.preventDefault();
-    const userInput = searchRef.current.value;
-    setSearch(userInput);
-
-    // Aquí puedes hacer lo que desees con la información de búsqueda
-    // Por ejemplo, llamar a una función de búsqueda o realizar una solicitud a la API
-    loadWord(userInput).then((result) => setWordList(result));
+  const handleChange = (event) => {
+    setUserInput(event.target.value);
   };
 
   return (
-    <div className="beer-search">
-      <form onSubmit={doSearch}>
-      <input type="text" ref={searchRef.current} />
-        <button type="submit">Search</button>
-      </form>
-
-      <WordList wordList={wordList} />
+    <div>
+      <input type="text" value={userInput} onChange={handleChange} />
+      <button>Search</button>
+      <p>Tu entrada: {userInput}</p>
+      
     </div>
   );
 }
 
-export default WordSearch;
+export default MyComponent;

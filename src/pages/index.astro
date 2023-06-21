@@ -1,14 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
-import WordSearch from '../components/BeerSearch copy';
+import MyComponent from '../components/BeerSearch copy';
 ---
 
 <Layout title="Alvaro's game">
 	<main>
 		<p>Enter a word here:</p>
 
-		<WordSearch client:load />
+		<MyComponent client:load />
 	</main>
 </Layout>
 
