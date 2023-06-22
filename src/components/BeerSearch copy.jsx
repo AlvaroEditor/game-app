@@ -62,8 +62,11 @@ function MyComponent() {
       <div class="buttondiv">
         <button onClick={handleClick} class="custom-button">Synonyms</button>
         {showInfo && <p>Aquí está la información que deseas mostrar.</p>}
-        <button onClick={handleClick}>Antonyms</button>
-        {showInfo && <p>Aquí está la información que deseas mostrar.</p>}</div>
+        <button onClick={handleClick} class="custom-button">Antonyms</button>
+        {showInfo && <p>Aquí está la información que deseas mostrar.</p>}
+        <button onClick={handleClick} class="custom-button">Phonetics</button>
+        {showInfo && <p>Aquí está la información que deseas mostrar.</p>}
+      </div>
     </div>
 
 
