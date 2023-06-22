@@ -2,6 +2,15 @@ import React, { useEffect, useRef, useState } from "react";
 import { loadWord } from "../api";
 import "./buttonstyle.css"
 
+const Definitions = ({ all_info }) => {
+  return (
+    <div className="beer-list">
+      {all_info.map((all_info) => (<div className="beer">{all_info.word}</div>
+      ))}
+    </div>
+  );
+}
+
 function MyComponent() {
   const [userInput, setUserInput] = useState("");
   const [word, setSavedValue] = useState("");
@@ -52,16 +61,20 @@ function MyComponent() {
       <input type="text" value={userInput} onChange={handleChange} />
       <button onClick={saveValue}>Search</button>
       <p>Tu entrada: {word}</p>
-       
-      {/* <div>
+      <Definitions all_info={allInfo} />
+
+
+      {/*
+       <div>
          {allInfo.map((definition, index) => (  
           <div key={index}>
             <p>Phonetics: {definition.phonetics}</p>
       </div> 
         ))}
-         */
+         
          
       </div>
+      */ }
       <div class="buttondiv">
         <button onClick={handleSynonymsClick} class="custom-button">Synonyms</button>
 
