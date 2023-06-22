@@ -30,17 +30,18 @@ function MyComponent() {
     setUserInput(event.target.value);
   };
   const saveValue = async () => {
-
-    const something = "example";
-    const beers = await loadWord(something);
-    console.log(beers);
     /*
+        const something = "example";
+        const beers = await loadWord(something);
+        console.log(beers);*/
+
+
     setSavedValue(userInput);
     setUserInput("");
-    all_info = await loadWord(userInput);
-
+    var all_info = await loadWord(userInput);
+    console.log(all_info);
     setAllInfo(Array.isArray(all_info) ? all_info : [all_info]);
-    */
+
   };
 
 
@@ -51,40 +52,29 @@ function MyComponent() {
       <input type="text" value={userInput} onChange={handleChange} />
       <button onClick={saveValue}>Search</button>
       <p>Tu entrada: {word}</p>
-      <div>
-        { /* {allInfo.map((definition, index) => (  
+       
+      {/* <div>
+         {allInfo.map((definition, index) => (  
           <div key={index}>
             <p>Phonetics: {definition.phonetics}</p>
       </div> 
         ))}
-          {allInfo.map((definition, index) => (
-          <div key={index}>
-            <p>Phonetics:</p>
-            {definition.phonetics.map((phonetic, phoneticIndex) => (
-              <p key={phoneticIndex}>{phonetic.text}</p>
-            ))}
-          </div>
-        ))}
-        */}
-
-
+         */
+         
       </div>
       <div class="buttondiv">
         <button onClick={handleSynonymsClick} class="custom-button">Synonyms</button>
-        {synonymsInfo && <p>Aquí está la información que deseas mostrar.</p>}
+
         <button onClick={handleAntonymsClick} class="custom-button">Antonyms</button>
-        {antonymsInfo && <p>Aquí está la información que deseas mostrar.</p>}
+
         <button onClick={handlePhoneticsClick} class="custom-button">Phonetics</button>
-        {phoneticsInfo && <p>Aquí está la información que deseas mostrar.</p>}
+
       </div>
+      <div>{synonymsInfo && <p>Aquí está la información que deseas mostrar.</p>}</div>
+      <div> {antonymsInfo && <p>Aquí está la información que deseas mostrar.</p>}</div>
+      <div>{phoneticsInfo && <p>Aquí está la información que deseas mostrar.</p>}</div>
+
     </div>
-
-
-
-
-
-
-
   );
 }
 
