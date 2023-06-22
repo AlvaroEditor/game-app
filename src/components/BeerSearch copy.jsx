@@ -6,18 +6,21 @@ const Definitions = ({ all_info }) => {
   return (
     <div className="word-list">
       {all_info.map((all_info) => (
-      <div className="word">{all_info.word}</div>
+        <div className="word">{all_info.word}</div>
+      { var meanings = all_info.meanings }
       
-      {all_info.meanings.map((all_info) => (
-        <div className="word">{all_info.word}</div>)
-      
-      
-      )}
+      {
+          all_info.meanings.map((all_info) => (
+            <div className="word">{all_info.word}</div>
 
-    
+          ))
+        }))}
+
+
+
     </div>
   );
-}
+};
 
 function MyComponent() {
   const [userInput, setUserInput] = useState("");
