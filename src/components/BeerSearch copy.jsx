@@ -15,6 +15,10 @@ const Meanings = ({ all_info }) => {
 };
 
 const Meanings_2 = ({ all_info }) => {
+  if(typeof all_info.synonyms === "undefined" ){
+    return <div>.</div>;
+  }
+
   return (
     <div className="synonyms-list">
       {all_info.map((all_info) => (
