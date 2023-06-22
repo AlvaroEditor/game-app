@@ -6,7 +6,7 @@ const Meanings = ({ all_info }) => {
   return (
     <div className="meaning-list">
       {all_info.map((all_info) => (
-        <><div className="meaning">{all_info.partOfSpeech}</div><div>
+        <><div className="meaning">Type: {all_info.partOfSpeech}</div><div>
           <Definitions all_info={all_info.definitions} />
         </div></>
       ))}
@@ -18,8 +18,9 @@ const Definitions = ({ all_info }) => {
   return (
     <div className="definition-list">
       {all_info.map((all_info) => (
-        <><div className="definition"> <h6>Definition:</h6> {all_info.definition}</div>
-          <div className="example">{all_info.example}</div></>
+        <><div className="definition"> Definition: {all_info.definition} </div>
+          <div className="example">Example: {all_info.example} <h6></h6> </div></>
+          
 
       ))}
     </div>
@@ -49,16 +50,18 @@ const Words = ({ all_info }) => {
     setAntonymsInfo(false);
     setSynonymsInfo(false);
   };
+  /*
   console.log("xxxxxxxxxxxxxx");
   console.log(all_info);
   console.log("xxxxxxxxxxxxxx");
   if (all_info.length === 0) {
     return <div>No word</div>
   }
+  */
   return (
     <><div className="word-list">
       {all_info.map((all_info) => (
-        <><div className="word">{all_info.word}</div><div>
+        <><div className="word">Word: {all_info.word}</div><div>
           <Meanings all_info={all_info.meanings} />
         </div></>
       ))}
@@ -72,10 +75,10 @@ const Words = ({ all_info }) => {
         <button onClick={handlePhoneticsClick} class="custom-button">Phonetics</button>
 
       </div>
-      <div>{synonymsInfo && <p>Sinonimo</p>}</div>
+      <div>{synonymsInfo && <p>Synonyms:</p>}</div>
 
-      <div> {antonymsInfo && <p>Aquí está la información que deseas mostrar.</p>}</div>
-      <div>{phoneticsInfo && <p>Aquí está la información que deseas mostrar.</p>}</div></>
+      <div> {antonymsInfo && <p>Antonyms:</p>}</div>
+      <div>{phoneticsInfo && <p>Phonetics:</p>}</div></>
 
 
   );
@@ -117,7 +120,7 @@ function MyComponent() {
     <div>
       <input type="text" value={userInput} onChange={handleChange} />
       <button onClick={saveValue}>Search</button>
-      <p>Tu entrada: {word}</p>
+      <p>Your entry: {word}</p>
       <Words all_info={allInfo} />
 
 
