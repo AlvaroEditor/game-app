@@ -6,10 +6,20 @@ function MyComponent() {
   const [userInput, setUserInput] = useState("");
   const [word, setSavedValue] = useState("");
   const [allInfo, setAllInfo] = useState([]);
-  const [showInfo, setShowInfo] = useState(false);
+  const [synonymsInfo, setSynonymsInfo] = useState(false);
+  const [antonymsInfo, setAntonymsInfo] = useState(false);
+  const [phoneticsInfo, setPhoneticsInfo] = useState(false);
 
-  const handleClick = () => {
-    setShowInfo(!showInfo);
+  const handleSynonymsClick = () => {
+    setSynonymsInfo(!synonymsInfo);
+  };
+
+  const handleAntonymsClick = () => {
+    setAntonymsInfo(!antonymsInfo);
+  };
+
+  const handlePhoneticsClick = () => {
+    setPhoneticsInfo(!phoneticsInfo);
   };
 
   useEffect(() => {
@@ -60,12 +70,12 @@ function MyComponent() {
 
       </div>
       <div class="buttondiv">
-        <button onClick={handleClick} class="custom-button">Synonyms</button>
-        {showInfo && <p>Aquí está la información que deseas mostrar.</p>}
-        <button onClick={handleClick} class="custom-button">Antonyms</button>
-        {showInfo && <p>Aquí está la información que deseas mostrar.</p>}
-        <button onClick={handleClick} class="custom-button">Phonetics</button>
-        {showInfo && <p>Aquí está la información que deseas mostrar.</p>}
+        <button onClick={handleSynonymsClick} class="custom-button">Synonyms</button>
+        {synonymsInfo && <p>Aquí está la información que deseas mostrar.</p>}
+        <button onClick={handleAntonymsClick} class="custom-button">Antonyms</button>
+        {antonymsInfo && <p>Aquí está la información que deseas mostrar.</p>}
+        <button onClick={handlePhoneticsClick} class="custom-button">Phonetics</button>
+        {phoneticsInfo && <p>Aquí está la información que deseas mostrar.</p>}
       </div>
     </div>
 
