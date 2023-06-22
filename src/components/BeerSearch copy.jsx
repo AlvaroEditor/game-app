@@ -4,43 +4,73 @@ import "./buttonstyle.css"
 
 const Meanings = ({ all_info }) => {
   return (
-    <div className="word-list">
+    <div className="meaning-list">
       {all_info.map((all_info) => (
-        <><div className="word">{all_info.partOfSpeech}</div><div>
+        <><div className="meaning">{all_info.partOfSpeech}</div><div>
           <Definitions all_info={all_info.definitions} />
-
         </div></>
       ))}
-
-
     </div>
-
   );
 };
 
 const Definitions = ({ all_info }) => {
   return (
-    <div className="word-list">
+    <div className="definition-list">
       {all_info.map((all_info) => (
-        <div className="word">{all_info.definition}</div>
+        <><div className="definition"> <h6>Definition:</h6> {all_info.definition}</div>
+          <div className="example">{all_info.example}</div></>
+
       ))}
-
-
     </div>
   );
 };
 
 const Words = ({ all_info }) => {
+  const [synonymsInfo, setSynonymsInfo] = useState(false);
+  const [antonymsInfo, setAntonymsInfo] = useState(false);
+  const [phoneticsInfo, setPhoneticsInfo] = useState(false);
+
+
+  const handleSynonymsClick = () => {
+    setSynonymsInfo(!synonymsInfo);
+    setAntonymsInfo(false);
+    setPhoneticsInfo(false);
+  };
+
+  const handleAntonymsClick = () => {
+    setAntonymsInfo(!antonymsInfo);
+    setPhoneticsInfo(false);
+    setSynonymsInfo(false);
+  };
+
+  const handlePhoneticsClick = () => {
+    setPhoneticsInfo(!phoneticsInfo);
+    setAntonymsInfo(false);
+    setSynonymsInfo(false);
+  };
+
   return (
-    <div className="word-list">
+    <><div className="word-list">
       {all_info.map((all_info) => (
         <><div className="word">{all_info.word}</div><div>
           <Meanings all_info={all_info.meanings} />
         </div></>
       ))}
-
-
     </div>
+      <div class="buttondiv">
+        <button onClick={handleSynonymsClick} class="custom-button">Synonyms</button>
+
+        <button onClick={handleAntonymsClick} class="custom-button">Antonyms</button>
+
+        <button onClick={handlePhoneticsClick} class="custom-button">Phonetics</button>
+
+      </div>
+      <div>{synonymsInfo && <p>Aquí está la información que deseas mostrar.</p>}</div>
+      <div> {antonymsInfo && <p>Aquí está la información que deseas mostrar.</p>}</div>
+      <div>{phoneticsInfo && <p>Aquí está la información que deseas mostrar.</p>}</div></>
+
+
   );
 };
 
@@ -48,21 +78,8 @@ function MyComponent() {
   const [userInput, setUserInput] = useState("");
   const [word, setSavedValue] = useState("");
   const [allInfo, setAllInfo] = useState([]);
-  const [synonymsInfo, setSynonymsInfo] = useState(false);
-  const [antonymsInfo, setAntonymsInfo] = useState(false);
-  const [phoneticsInfo, setPhoneticsInfo] = useState(false);
 
-  const handleSynonymsClick = () => {
-    setSynonymsInfo(!synonymsInfo);
-  };
 
-  const handleAntonymsClick = () => {
-    setAntonymsInfo(!antonymsInfo);
-  };
-
-  const handlePhoneticsClick = () => {
-    setPhoneticsInfo(!phoneticsInfo);
-  };
 
   useEffect(() => {
     loadWord().then((allInfo) => setAllInfo(allInfo));
@@ -108,22 +125,10 @@ function MyComponent() {
          
       </div>
       */ }
-      <div class="buttondiv">
-        <button onClick={handleSynonymsClick} class="custom-button">Synonyms</button>
-
-        <button onClick={handleAntonymsClick} class="custom-button">Antonyms</button>
-
-        <button onClick={handlePhoneticsClick} class="custom-button">Phonetics</button>
-
       </div>
-      <div>{synonymsInfo && <p>Aquí está la información que deseas mostrar.</p>}</div>
-      <div> {antonymsInfo && <p>Aquí está la información que deseas mostrar.</p>}</div>
-      <div>{phoneticsInfo && <p>Aquí está la información que deseas mostrar.</p>}</div>
-
-    </div>
-  );
+      );
 }
 
 
 
-export default MyComponent;
+      export default MyComponent;
