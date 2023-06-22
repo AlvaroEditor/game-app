@@ -61,7 +61,7 @@ const Words = ({ all_info }) => {
   return (
     <><div className="word-list">
       {all_info.map((all_info) => (
-        <><div className="word">Word: {all_info.word} <h6></h6></div><div>
+        <><div className="word">Word: {all_info.word} <h6></h6>  </div><div>
           <Meanings all_info={all_info.meanings} />
         </div></>
       ))}
