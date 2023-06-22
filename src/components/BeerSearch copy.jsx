@@ -14,6 +14,29 @@ const Meanings = ({ all_info }) => {
   );
 };
 
+const Meanings_2 = ({ all_info }) => {
+  return (
+    <div className="synonyms-list">
+      {all_info.map((all_info) => (
+        <><div className="synonyms">{all_info.partOfSpeech}</div><div>
+          <Synonyms all_info={all_info.synonyms} />
+        </div></>
+      ))}
+    </div>
+  );
+};
+const Synonyms = ({ all_info }) => {
+  return (
+    <div className="definition-list">
+      {all_info.map((all_info) => (
+        
+          <div>{all_info}</div>
+
+      ))}
+    </div>
+  );
+};
+
 const Definitions = ({ all_info }) => {
   return (
     <div className="definition-list">
@@ -59,14 +82,16 @@ const Words = ({ all_info }) => {
       ))}
     </div>
       <div class="buttondiv">
+        
         <button onClick={handleSynonymsClick} class="custom-button">Synonyms</button>
-
+        
         <button onClick={handleAntonymsClick} class="custom-button">Antonyms</button>
 
         <button onClick={handlePhoneticsClick} class="custom-button">Phonetics</button>
 
       </div>
-      <div>{synonymsInfo && <p>Aquí está la información que deseas mostrar.</p>}</div>
+      <div>{synonymsInfo && <p>Sinonimo</p>}</div>
+      <Meanings_2 all_info={all_info.meanings} />
       <div> {antonymsInfo && <p>Aquí está la información que deseas mostrar.</p>}</div>
       <div>{phoneticsInfo && <p>Aquí está la información que deseas mostrar.</p>}</div></>
 
