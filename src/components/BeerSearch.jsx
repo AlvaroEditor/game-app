@@ -29,6 +29,11 @@ function WordSearch() {
   const searchRef = useRef();
   const [search, setSearch] = useState("");
   const [wordList, setWordList] = useState(null);
+  const [showInfo, setShowInfo] = useState(false);
+
+  const handleClick = () => {
+    setShowInfo(!showInfo);
+  };
   useEffect(() => {
     loadWord().then((word) => setWordList(word));
   }, []);
@@ -46,8 +51,10 @@ function WordSearch() {
       <form onSubmit={doSearch}>
         <input type="text" ref={searchRef} />
         <button>Search</button>
+               
       </form>
-      
+      <button onClick={handleClick}>Mostrar información</button>
+      {showInfo && <p>Aquí está la información que deseas mostrar.</p>}
       <WordList wordList={wordList} />
     </div>
     

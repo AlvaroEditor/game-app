@@ -5,6 +5,11 @@ function MyComponent() {
   const [userInput, setUserInput] = useState("");
   const [word, setSavedValue] = useState("");
   const [allInfo, setAllInfo] = useState([]);
+  const [showInfo, setShowInfo] = useState(false);
+
+  const handleClick = () => {
+    setShowInfo(!showInfo);
+  };
 
   useEffect(() => {
     loadWord().then((allInfo) => setAllInfo(allInfo));
@@ -50,7 +55,8 @@ function MyComponent() {
           </div>
         ))}
         */}
-       
+       <button onClick={handleClick}>Mostrar información</button>
+      {showInfo && <p>Aquí está la información que deseas mostrar.</p>}
       </div>
     </div>
 
