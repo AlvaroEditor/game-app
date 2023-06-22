@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { loadWord } from "../api";
+import "./buttonstyle.css"
 
 function MyComponent() {
   const [userInput, setUserInput] = useState("");
@@ -55,9 +56,14 @@ function MyComponent() {
           </div>
         ))}
         */}
-       <button onClick={handleClick}>Mostrar información</button>
-      {showInfo && <p>Aquí está la información que deseas mostrar.</p>}
+
+
       </div>
+      <div class="buttondiv">
+        <button onClick={handleClick} class="custom-button">Synonyms</button>
+        {showInfo && <p>Aquí está la información que deseas mostrar.</p>}
+        <button onClick={handleClick}>Antonyms</button>
+        {showInfo && <p>Aquí está la información que deseas mostrar.</p>}</div>
     </div>
 
 
