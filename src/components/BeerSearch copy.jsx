@@ -2,20 +2,42 @@ import React, { useEffect, useRef, useState } from "react";
 import { loadWord } from "../api";
 import "./buttonstyle.css"
 
+const Meanings = ({ all_info }) => {
+  return (
+    <div className="word-list">
+      {all_info.map((all_info) => (
+        <><div className="word">{all_info.partOfSpeech}</div><div>
+          <Definitions all_info={all_info.definitions} />
+
+        </div></>
+      ))}
+
+
+    </div>
+
+  );
+};
+
 const Definitions = ({ all_info }) => {
   return (
     <div className="word-list">
       {all_info.map((all_info) => (
-        <div className="word">{all_info.word}</div>
-      { var meanings = all_info.meanings }
-      
-      {
-          all_info.meanings.map((all_info) => (
-            <div className="word">{all_info.word}</div>
+        <div className="word">{all_info.definition}</div>
+      ))}
 
-          ))
-        }))}
 
+    </div>
+  );
+};
+
+const Words = ({ all_info }) => {
+  return (
+    <div className="word-list">
+      {all_info.map((all_info) => (
+        <><div className="word">{all_info.word}</div><div>
+          <Meanings all_info={all_info.meanings} />
+        </div></>
+      ))}
 
 
     </div>
@@ -72,7 +94,7 @@ function MyComponent() {
       <input type="text" value={userInput} onChange={handleChange} />
       <button onClick={saveValue}>Search</button>
       <p>Tu entrada: {word}</p>
-      <Definitions all_info={allInfo} />
+      <Words all_info={allInfo} />
 
 
       {/*
